@@ -20,7 +20,7 @@
 
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=wordpress,php,laravel,mysql,js,react,tailwind,html,css,bootstrap,jquery,python,django,dotnet,electron,git,cloudflare&theme=dark&perline=17">
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=wordpress%2Cphp%2Claravel%2Cmysql%2Cjs%2Creact%2Ctailwind%2Chtml%2Ccss%2Cbootstrap%2Cjquery%2Cpython%2Cdjango%2Cdotnet%2Celectron%2Cgit%2Ccloudflare&theme=dark&perline=17">
     <img src="https://skillicons.dev/icons?i=wordpress,php,laravel,mysql,js,react,tailwind,html,css,bootstrap,jquery,python,django,dotnet,electron,git,cloudflare&theme=light&perline=17" width="100%" alt="WordPress, PHP, Laravel, MySQL, JavaScript, React, Tailwind, HTML, CSS, Bootstrap, jQuery, Python, Django, .NET, Electron, Git, Cloudflare">
   </picture>
 </p>

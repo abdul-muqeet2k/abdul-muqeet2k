@@ -1,14 +1,14 @@
 <a href="https://abdul.ecomflows.net/">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <img src="assets/hero-light.svg" width="100%" alt="Abdul Muqeet, senior WordPress, Shopify and Laravel developer. 6+ years, 300+ Shopify stores, 44 client builds, 5.0 Fiverr rating.">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg?v=2">
+    <img src="assets/hero-light.svg?v=2" width="100%" alt="Abdul Muqeet, senior WordPress, Shopify and Laravel developer. 6+ years, 300+ Shopify stores, 44 client builds, 5.0 Fiverr rating.">
   </picture>
 </a>
 
 <p>
-  <a href="https://abdul.ecomflows.net/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-portfolio-dark.svg"><img src="assets/btn-portfolio-light.svg" height="48" alt="See the portfolio of Abdul Muqeet"></picture></a>&nbsp;
-  <a href="mailto:muqeet.pugc@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-email-dark.svg"><img src="assets/btn-email-light.svg" height="48" alt="Email Abdul Muqeet"></picture></a>&nbsp;
-  <a href="https://www.fiverr.com/dr_webexpert"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-fiverr-dark.svg"><img src="assets/btn-fiverr-light.svg" height="48" alt="Hire Abdul Muqeet on Fiverr"></picture></a>
+  <a href="https://abdul.ecomflows.net/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-portfolio-dark.svg?v=2"><img src="assets/btn-portfolio-light.svg?v=2" height="48" alt="See the portfolio of Abdul Muqeet"></picture></a>&nbsp;
+  <a href="mailto:muqeet.pugc@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-email-dark.svg?v=2"><img src="assets/btn-email-light.svg?v=2" height="48" alt="Email Abdul Muqeet"></picture></a>&nbsp;
+  <a href="https://www.fiverr.com/dr_webexpert"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-fiverr-dark.svg?v=2"><img src="assets/btn-fiverr-light.svg?v=2" height="48" alt="Hire Abdul Muqeet on Fiverr"></picture></a>
 </p>
 
 <img src="https://komarev.com/ghpvc/?username=abdul-muqeet2k&label=Profile%20views&color=5B43F0&style=for-the-badge" alt="Profile views">
@@ -18,15 +18,15 @@ I'm **Abdul Muqeet**, a senior **WordPress developer**, **Shopify developer** an
 ## WordPress, Shopify and Laravel development
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stacks-dark.svg">
-  <img src="assets/stacks-light.svg" width="100%" alt="What I build. WordPress: custom themes and plugins, WooCommerce, Elementor, ACF and Gutenberg. Shopify: Online Store 2.0 themes in Liquid, 300+ stores worked on. Laravel: SaaS platforms, multi-tenant CRMs, client portals and REST APIs. Custom: Chrome extensions, Electron apps, AI agents and automation.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stacks-dark.svg?v=2">
+  <img src="assets/stacks-light.svg?v=2" width="100%" alt="What I build. WordPress: custom themes and plugins, WooCommerce, Elementor, ACF and Gutenberg. Shopify: Online Store 2.0 themes in Liquid, 300+ stores worked on. Laravel: SaaS platforms, multi-tenant CRMs, client portals and REST APIs. Custom: Chrome extensions, Electron apps, AI agents and automation.">
 </picture>
 
 ## Skills and tools
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/skills-dark.svg">
-  <img src="assets/skills-light.svg" width="100%" alt="Skill depth. Expert: WordPress, frontend, speed and Core Web Vitals, security and upkeep. Advanced: Shopify, Laravel, technical SEO, AI and automation.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/skills-dark.svg?v=2">
+  <img src="assets/skills-light.svg?v=2" width="100%" alt="Skill depth. Expert: WordPress, frontend, speed and Core Web Vitals, security and upkeep. Advanced: Shopify, Laravel, technical SEO, AI and automation.">
 </picture>
 
 <p>
@@ -54,8 +54,8 @@ Also: ACF, Gutenberg, Shopify Liquid, Inertia, REST APIs, webhooks, LiteSpeed, c
 ## Website security and hardening
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/security-dark.svg">
-  <img src="assets/security-light.svg" width="100%" alt="How a request reaches a site I build: Cloudflare WAF and CDN, a firewall with login rate limits and an IP blocklist, a hardened WordPress or Laravel app, and offsite backups. Brute-force logins and file probes are blocked.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/security-dark.svg?v=2">
+  <img src="assets/security-light.svg?v=2" width="100%" alt="How a request reaches a site I build: Cloudflare WAF and CDN, a firewall with login rate limits and an IP blocklist, a hardened WordPress or Laravel app, and offsite backups. Brute-force logins and file probes are blocked.">
 </picture>
 
 Malware cleanup and hacked-site recovery, WordPress firewall and login protection, Cloudflare WAF, secure forms for healthcare clients, and backups that are restored and tested, not only taken.
@@ -63,8 +63,8 @@ Malware cleanup and hacked-site recovery, WordPress firewall and login protectio
 ## Launch checklist
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/checklist-dark.svg">
-  <img src="assets/checklist-light.svg" width="100%" alt="Checked before every handover: SSL and HSTS, security headers, admin login rate limits and 2FA, Core Web Vitals (LCP under 2.5s, INP under 200ms, CLS under 0.1), schema, sitemap.xml and robots.txt, daily offsite backups, uptime monitoring.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/checklist-dark.svg?v=2">
+  <img src="assets/checklist-light.svg?v=2" width="100%" alt="Checked before every handover: SSL and HSTS, security headers, admin login rate limits and 2FA, Core Web Vitals (LCP under 2.5s, INP under 200ms, CLS under 0.1), schema, sitemap.xml and robots.txt, daily offsite backups, uptime monitoring.">
 </picture>
 
 ## Tools I have built
@@ -78,8 +78,8 @@ Malware cleanup and hacked-site recovery, WordPress firewall and login protectio
 ## Career
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/timeline-dark.svg">
-  <img src="assets/timeline-light.svg" width="100%" alt="Career timeline from 2017 to now: Aptech, Softarena Solution, freelance on Fiverr, National IT Solution, Zi Softech, Zee IT Service, EcomFlows Limited, ThemeHive Technologies.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/timeline-dark.svg?v=2">
+  <img src="assets/timeline-light.svg?v=2" width="100%" alt="Career timeline from 2017 to now: Aptech, Softarena Solution, freelance on Fiverr, National IT Solution, Zi Softech, Zee IT Service, EcomFlows Limited, ThemeHive Technologies.">
 </picture>
 
 <details>
@@ -103,13 +103,13 @@ Bachelor's in Information Technology, University of the Punjab. English, Urdu an
 ## GitHub activity
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
-  <img src="assets/activity-light.svg" width="100%" alt="GitHub activity of Abdul Muqeet: contributions, streaks and repositories, refreshed daily">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg?v=2">
+  <img src="assets/activity-light.svg?v=2" width="100%" alt="GitHub activity of Abdul Muqeet: contributions, streaks and repositories, refreshed daily">
 </picture>
 
 <a href="mailto:muqeet.pugc@gmail.com">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/closing-dark.svg">
-    <img src="assets/closing-light.svg" width="100%" alt="Hire a WordPress, Shopify and Laravel developer: available now for remote work, senior roles and contracts. Email muqeet.pugc@gmail.com">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/closing-dark.svg?v=2">
+    <img src="assets/closing-light.svg?v=2" width="100%" alt="Hire a WordPress, Shopify and Laravel developer: available now for remote work, senior roles and contracts. Email muqeet.pugc@gmail.com">
   </picture>
 </a>

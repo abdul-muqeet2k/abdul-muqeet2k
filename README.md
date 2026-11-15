@@ -71,7 +71,7 @@ Malware cleanup and hacked-site recovery, WordPress firewall and login protectio
 
 - **eBay Product Hunter Pro**, a Chrome extension that finds high-demand, low-competition eBay products from sold history, sell-through and competitor stores, with Excel export.
 - **FlipBridge**, a Chrome extension for eBay sellers.
-- **Alpha Merge Downloader**, an Electron desktop app.
+- **[Alpha Merge Downloader](https://github.com/abdul-muqeet2k/alpha-merge-downloader)**, a free Windows download manager: up to 32 connections per file, merges Wi-Fi, Ethernet and a phone hotspot, resumes after restarts, and downloads 4K video. **[Download for Windows](https://github.com/abdul-muqeet2k/alpha-merge-downloader/releases/latest)**
 - **Zee Security Sentinel**, a WordPress firewall and login-protection plugin.
 - **Speed Optimizer**, a Core Web Vitals toolkit for WordPress.
 

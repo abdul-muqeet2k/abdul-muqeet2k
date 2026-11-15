@@ -11,6 +11,8 @@
   <a href="https://www.fiverr.com/dr_webexpert"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-fiverr-dark.svg"><img src="assets/btn-fiverr-light.svg" height="48" alt="Hire Abdul Muqeet on Fiverr"></picture></a>
 </p>
 
+<img src="https://komarev.com/ghpvc/?username=abdul-muqeet2k&label=Profile%20views&color=5B43F0&style=for-the-badge" alt="Profile views">
+
 I'm **Abdul Muqeet**, a senior **WordPress developer**, **Shopify developer** and **Laravel developer** based in Gujranwala, Pakistan. Since 2019 I have worked remotely for clients in the US, the UK, Canada, the UAE and South Africa: custom WordPress themes and plugins, WooCommerce and Shopify stores, and Laravel CRMs and SaaS apps. Every site ships fast (Core Web Vitals), search-ready (technical SEO and schema) and hardened against attacks.
 
 ## WordPress, Shopify and Laravel development
@@ -27,7 +29,27 @@ I'm **Abdul Muqeet**, a senior **WordPress developer**, **Shopify developer** an
   <img src="assets/skills-light.svg" width="100%" alt="Skill depth. Expert: WordPress, frontend, speed and Core Web Vitals, security and upkeep. Advanced: Shopify, Laravel, technical SEO, AI and automation.">
 </picture>
 
-WordPress · WooCommerce · Elementor · ACF · Gutenberg · Shopify Liquid · Laravel · PHP · MySQL · JavaScript · React · Inertia · Tailwind CSS · GSAP · Python · Django · ASP.NET MVC · REST APIs · Webhooks · Cloudflare · LiteSpeed · cPanel · Plesk · Git · Claude · MCP servers
+<p>
+  <img src="https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white" alt="WordPress">
+  <img src="https://img.shields.io/badge/WooCommerce-96588A?style=for-the-badge&logo=woocommerce&logoColor=white" alt="WooCommerce">
+  <img src="https://img.shields.io/badge/Elementor-92003B?style=for-the-badge&logo=elementor&logoColor=white" alt="Elementor">
+  <img src="https://img.shields.io/badge/Shopify-7AB55C?style=for-the-badge&logo=shopify&logoColor=white" alt="Shopify">
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/GSAP-0AE448?style=for-the-badge&logo=greensock&logoColor=black" alt="GSAP">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django">
+  <img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="ASP.NET MVC">
+  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white" alt="Claude AI">
+</p>
+
+Also: ACF, Gutenberg, Shopify Liquid, Inertia, REST APIs, webhooks, LiteSpeed, cPanel, Plesk and MCP servers.
 
 ## Website security and hardening
 
@@ -77,6 +99,13 @@ Bachelor's in Information Technology, University of the Punjab. English, Urdu an
 </details>
 
 44 client builds across healthcare, eCommerce, SaaS and finance are on [abdul.ecomflows.net](https://abdul.ecomflows.net/).
+
+## GitHub activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
+  <img src="assets/activity-light.svg" width="100%" alt="GitHub activity of Abdul Muqeet: contributions, streaks and repositories, refreshed daily">
+</picture>
 
 <a href="mailto:muqeet.pugc@gmail.com">
   <picture>

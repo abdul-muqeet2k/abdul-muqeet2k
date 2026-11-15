@@ -2,7 +2,7 @@
 // Run: node scripts/build-assets.mjs
 // Each picture is made twice, for GitHub's light and dark themes.
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -358,6 +358,38 @@ function timeline(t) {
   return svg(W, H, "Career timeline 2017 to now: Aptech, Softarena Solution, freelance on Fiverr, National IT Solution, Zi Softech team lead, Zee IT Service, EcomFlows Limited senior developer, ThemeHive Technologies", body, css);
 }
 
+/* ---------------- GitHub activity, refreshed daily by .github/workflows/stats.yml ---------------- */
+
+function activity(t, s) {
+  const W = 1280, H = 440, BASE = 360, TALL = 130;
+  let body = panel(t, W, H, `gh stats --user abdul-muqeet2k`);
+  const nums = [
+    [s.contributions, "contributions, last year"],
+    [s.currentStreak, "day streak, current"],
+    [s.longestStreak, "day streak, longest"],
+    [s.repos, "public repositories"],
+    [s.stars, "stars earned"],
+  ];
+  nums.forEach(([n, label], i) => {
+    const x = 40 + i * 245;
+    body += `<g ${show(0.2 + i * 0.1)}><text x="${x}" y="152" font-size="56" font-weight="900" letter-spacing="-2" fill="${i === 1 ? t.ok : t.cardInk}">${n}</text>`;
+    body += `<text x="${x + 2}" y="182" font-size="14" font-family="${MONO}" fill="${t.comment}">${label}</text></g>`;
+  });
+  const max = Math.max(1, ...s.weeks);
+  const step = 1200 / s.weeks.length;
+  s.weeks.forEach((n, i) => {
+    const h = n ? Math.max(8, Math.round((n / max) * TALL)) : 3;
+    const x = (40 + i * step).toFixed(1);
+    body += `<rect class="bar" style="animation-delay:${(0.6 + i * 0.015).toFixed(3)}s" x="${x}" y="${BASE - h}" width="${(step - 5).toFixed(1)}" height="${h}" fill="${n ? t.ok : t.tone}"/>`;
+  });
+  body += `<text x="40" y="${BASE + 40}" font-size="14" font-family="${MONO}" fill="${t.comment}">contributions per week, last 52 weeks · updated ${s.updated}</text>`;
+  const css = `${POP}
+.bar{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:grow .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes grow{to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.bar{transform:none}}`;
+  return svg(W, H, `GitHub activity of Abdul Muqeet: ${s.contributions} contributions in the last year, ${s.currentStreak}-day current streak, ${s.repos} public repositories`, body, css);
+}
+
 /* ---------------- buttons and closing ---------------- */
 
 function button(t, label, w) {
@@ -381,6 +413,9 @@ function closing(t) {
 
 /* ---------------- write ---------------- */
 
+const statsFile = join(here, "stats.json");
+const stats = existsSync(statsFile) ? JSON.parse(readFileSync(statsFile, "utf8")) : null;
+
 const BUTTONS = [["portfolio", "See the portfolio", 236], ["email", "Email me", 160], ["fiverr", "Hire me on Fiverr", 236]];
 
 for (const [mode, t] of Object.entries(THEMES)) {
@@ -388,6 +423,7 @@ for (const [mode, t] of Object.entries(THEMES)) {
   writeFileSync(out(`stacks-${mode}.svg`), stacks(t));
   writeFileSync(out(`closing-${mode}.svg`), closing(t));
   for (const [name, fn] of Object.entries({ skills, security, checklist, timeline })) writeFileSync(out(`${name}-${mode}.svg`), fn(t));
+  if (stats) writeFileSync(out(`activity-${mode}.svg`), activity(t, stats));
   BUTTONS.forEach(([id, label, w]) => writeFileSync(out(`btn-${id}-${mode}.svg`), button(t, label, w)));
 }
 console.log("assets written");

@@ -18,7 +18,7 @@ const MONO = `ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monos
 const THEMES = {
   light: {
     bg: "#F2F2F0", ink: "#0F0E14", muted: "#55535C", card: "#0F0E14", cardInk: "#F2F2F0",
-    comment: "#8A8794",
+    comment: "#8A8794", tone: "#24232E", ok: "#46D38A",
     stack: {
       wp: { c: "#5B43F0", field: "#E6E1FF", tint: "#A99BFF" },
       sh: { c: "#0A7F99", field: "#D5EFF5", tint: "#5CC8E0" },
@@ -28,7 +28,7 @@ const THEMES = {
   },
   dark: {
     bg: "#0D1117", ink: "#F2F2F0", muted: "#A7A5AE", card: "#1A1922", cardInk: "#F2F2F0",
-    comment: "#8A8794",
+    comment: "#8A8794", tone: "#2B2A36", ok: "#46D38A",
     stack: {
       wp: { c: "#A99BFF", field: "#211B47", tint: "#A99BFF" },
       sh: { c: "#5CC8E0", field: "#0C2C35", tint: "#5CC8E0" },
@@ -61,15 +61,6 @@ function wrap(text, max) {
   }
   if (line) lines.push(line);
   return lines;
-}
-
-// Width and height of a WebP file, read from its header.
-function webpSize(buf) {
-  const chunk = buf.toString("ascii", 12, 16);
-  if (chunk === "VP8X") return { w: 1 + buf.readUIntLE(24, 3), h: 1 + buf.readUIntLE(27, 3) };
-  if (chunk === "VP8 ") return { w: buf.readUInt16LE(26) & 0x3fff, h: buf.readUInt16LE(28) & 0x3fff };
-  const b = buf.readUInt32LE(21);
-  return { w: (b & 0x3fff) + 1, h: ((b >> 14) & 0x3fff) + 1 };
 }
 
 /* ---------------- hero: name + the code card that types real work ---------------- */
@@ -219,42 +210,152 @@ function stacks(t) {
   return svg(W, H, "What I build: WordPress, Shopify, Laravel and custom software", body, css);
 }
 
-/* ---------------- work cards: the real site scrolls inside the frame ---------------- */
+/* ---------------- infographics: developer and security panels ---------------- */
 
-const WORK = [
-  ["berlet", "berletplasticsurgery-tall.webp", "Berlet Plastic Surgery", "wp", "WordPress", "Plastic surgeon in New York and New Jersey"],
-  ["eblink", "crm-eblink-dashboard.webp", "EBlink CRM", "lv", "Laravel", "Multi-tenant CRM for employee-benefits brokers"],
-  ["vitalaxion", "vitalaxion-tall.webp", "VitalAxion", "wp", "WooCommerce", "Bilingual store for a Canadian device maker"],
-  ["merlin", "merlin.webp", "Merlin Catering", "sh", "Shopify", "Price-on-application mode for a UK caterer"],
-  ["state-billing", "statebillingservices-tall.webp", "State Billing Services", "wp", "WordPress", "Medical billing and credentialing, South Carolina"],
-  ["salflows", "salflows-tall.webp", "Salflows", "lv", "Laravel", "Systems, commerce and growth for a London studio"],
+const PROMPT = "abdul@gujranwala:~$";
+const tint = (t, key) => (key === "ok" ? t.ok : t.stack[key].tint);
+const POP = `@keyframes show{to{opacity:1}}
+.blink{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{fill-opacity:0}}
+@media (prefers-reduced-motion:reduce){.show{opacity:1!important}}`;
+
+// Dark panel with a shell prompt and a blinking caret, shared by the infographics.
+// The caret is a character in the same text run, so it follows the command whatever monospace font the viewer has.
+function panel(t, W, H, command) {
+  return `<rect width="${W}" height="${H}" fill="${t.card}"/>` +
+    `<text x="40" y="58" font-size="17" font-family="${MONO}" xml:space="preserve" fill="${t.comment}">${PROMPT} <tspan fill="${t.cardInk}">${esc(command)}</tspan> <tspan class="blink" fill="${t.ok}">█</tspan></text>`;
+}
+const show = (delay) => `class="show" opacity="0" style="animation:show .3s ease-out ${delay.toFixed(2)}s forwards"`;
+
+const SKILLS = [
+  ["WordPress", 9, "Expert", "wp", "themes · plugins · WooCommerce · Elementor · ACF"],
+  ["Shopify", 7, "Advanced", "sh", "Liquid · Online Store 2.0 · metafields · APIs"],
+  ["Laravel", 7, "Advanced", "lv", "CRMs · multi-tenant SaaS · Inertia + React · REST"],
+  ["Frontend", 9, "Expert", "wp", "HTML · CSS · JavaScript · Tailwind · GSAP"],
+  ["Speed", 9, "Expert", "ok", "Core Web Vitals · LiteSpeed · WP Rocket · Cloudflare"],
+  ["Security and upkeep", 9, "Expert", "ok", "hardening · malware cleanup · backups · migrations"],
+  ["Technical SEO", 7, "Advanced", "sh", "schema · sitemaps · Rank Math · Search Console"],
+  ["AI and automation", 7, "Advanced", "lv", "Claude · MCP servers · OpenAI · AI agents"],
 ];
 
-function workCard(t, [id, file, name, key, stack, line], index) {
-  const W = 640, IMG = 400, H = 560;
-  const s = t.stack[key];
-  const buf = readFileSync(src(file));
-  const { w, h } = webpSize(buf);
-  const ih = Math.round((h * W) / w); // image height when fitted to the card width
-  const travel = Math.min(Math.max(0, ih - IMG), 1100);
-  const data = `data:image/webp;base64,${buf.toString("base64")}`;
-  let css = "";
-  if (travel > 40) {
-    const d = 22 + index * 1.7;
-    css += `.scroll{animation:scroll ${d}s cubic-bezier(.45,0,.55,1) ${index * 0.9}s infinite}
-@keyframes scroll{0%,12%{transform:translateY(0)}50%,62%{transform:translateY(-${travel}px)}100%{transform:translateY(0)}}`;
-  } else {
-    css += `.scroll{transform-origin:50% 0;animation:drift 18s ease-in-out infinite alternate}
-@keyframes drift{from{transform:scale(1)}to{transform:scale(1.06)}}`;
-  }
-  let body = `<rect width="${W}" height="${H}" fill="${s.field}"/>`;
-  body += `<clipPath id="f"><rect width="${W}" height="${IMG}"/></clipPath>`;
-  body += `<g clip-path="url(#f)"><image class="scroll" href="${data}" xlink:href="${data}" width="${W}" height="${ih}" preserveAspectRatio="xMidYMin slice"/></g>`;
-  body += `<rect y="${IMG}" width="${W}" height="8" fill="${s.c}"/>`;
-  body += `<text x="32" y="${IMG + 64}" font-size="34" font-weight="900" letter-spacing="-1" fill="${t.ink}">${esc(name)}</text>`;
-  body += `<text x="32" y="${IMG + 100}" font-size="19" fill="${t.ink}"><tspan font-weight="700" fill="${s.c}">${esc(stack)}</tspan>  ${esc(line)}</text>`;
-  body += `<text x="32" y="${IMG + 136}" font-size="17" font-weight="700" fill="${t.ink}">See it live  →</text>`;
-  return svg(W, H, `${name}, ${stack}: ${line}`, body, css);
+function skills(t) {
+  const W = 1280, ROW = 96, H = 120 + 4 * ROW + 8;
+  let body = panel(t, W, H, "skills --depth");
+  SKILLS.forEach(([name, level, word, key, tools], i) => {
+    const x0 = i < 4 ? 40 : 680, y = 120 + (i % 4) * ROW, c = tint(t, key);
+    body += `<text x="${x0}" y="${y + 22}" font-size="22" font-weight="700" fill="${t.cardInk}">${esc(name)}</text>`;
+    body += `<text x="${x0 + 560}" y="${y + 22}" text-anchor="end" font-size="15" font-family="${MONO}" fill="${c}">${word}</text>`;
+    for (let b = 0; b < 10; b++) {
+      const x = x0 + b * 56;
+      body += `<rect x="${x}" y="${y + 36}" width="51" height="14" fill="${t.tone}"/>`;
+      if (b < level) body += `<rect ${show(0.3 + i * 0.12 + b * 0.05)} x="${x}" y="${y + 36}" width="51" height="14" fill="${c}"/>`;
+    }
+    body += `<text x="${x0}" y="${y + 76}" font-size="14" font-family="${MONO}" fill="${t.comment}">${esc(tools)}</text>`;
+  });
+  return svg(W, H, "Skill depth: WordPress, frontend, speed, security and upkeep at expert level; Shopify, Laravel, technical SEO and AI automation at advanced level", body, POP);
+}
+
+const NODES = [
+  ["Visitor", ["browser or bot", "HTTPS only"]],
+  ["Cloudflare", ["WAF and CDN", "SSL + HSTS", "bot fight mode"]],
+  ["Firewall", ["Security Sentinel", "login rate limits", "IP blocklist"]],
+  ["App", ["WordPress, Laravel", "nonces and roles", "sanitised input"]],
+  ["Backups", ["daily, offsite", "tested restores"]],
+];
+const LOG = [
+  ["12:04:31", "ALLOW", "GET ", "/collections/fridges", "", "200  48 ms"],
+  ["12:04:32", "BLOCK", "POST", "/wp-login.php", "203.0.113.24", "brute force, 5 tries in 1 h"],
+  ["12:04:33", "ALLOW", "GET ", "/api/npi/1234567890", "", "200  61 ms"],
+  ["12:04:35", "BLOCK", "GET ", "/.env", "198.51.100.7", "sensitive file probe"],
+];
+
+function security(t) {
+  const W = 1280, H = 540, LANE = 312, BAD = t.stack.lv.tint;
+  let body = panel(t, W, H, "trace --request https://client-site.com");
+  const cx = (i) => 140 + i * 250;
+  body += `<rect x="140" y="${LANE - 2}" width="1000" height="4" fill="${t.tone}"/>`;
+  NODES.forEach(([title, lines], i) => {
+    const x = cx(i) - 100;
+    body += `<rect x="${x}" y="110" width="200" height="164" fill="${t.tone}"/>`;
+    body += `<rect x="${x}" y="110" width="200" height="6" fill="${i ? t.ok : t.comment}"/>`;
+    body += `<text x="${x + 20}" y="156" font-size="21" font-weight="700" fill="${t.cardInk}">${title}</text>`;
+    lines.forEach((l, j) => (body += `<text x="${x + 20}" y="${190 + j * 24}" font-size="14" font-family="${MONO}" fill="${t.comment}">${esc(l)}</text>`));
+    body += `<rect x="${cx(i) - 2}" y="274" width="4" height="${LANE - 274}" fill="${t.tone}"/>`;
+  });
+  // good requests travel the whole lane; the attack stops at the firewall
+  [0, 2, 4].forEach((d) => (body += `<rect class="pkt" style="animation-delay:${d}s" x="133" y="${LANE - 7}" width="14" height="14" fill="${t.ok}"/>`));
+  body += `<rect class="atk" x="133" y="${LANE - 7}" width="14" height="14" fill="${BAD}"/>`;
+  body += `<text class="hit" x="${cx(2) + 14}" y="${LANE - 14}" font-size="14" font-weight="700" font-family="${MONO}" fill="${BAD}">403 blocked</text>`;
+  LOG.forEach(([time, verdict, method, path, ip, note], i) => {
+    const y = 384 + i * 36;
+    const c = verdict === "BLOCK" ? BAD : t.ok;
+    body += `<g ${show(0.4 + i * 0.35)}><text x="40" y="${y}" font-size="16" font-family="${MONO}" xml:space="preserve" fill="${t.comment}">${time}  <tspan fill="${c}" font-weight="700">${verdict}</tspan>  <tspan fill="${t.cardInk}">${method}  ${esc(path.padEnd(22))}</tspan>${ip.padEnd(14)}  ${esc(note)}</text></g>`;
+  });
+  const css = `${POP}
+.pkt{opacity:0;animation:pkt 6s linear infinite}
+@keyframes pkt{0%{opacity:0;transform:translateX(0)}5%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translateX(1000px)}}
+.atk{opacity:0;animation:atk 6s linear 1s infinite}
+@keyframes atk{0%{opacity:1;transform:translateX(0)}40%{opacity:1;transform:translateX(${cx(2) - 140 - 16}px)}44%{opacity:0}48%{opacity:1}52%{opacity:0;transform:translateX(${cx(2) - 140 - 16}px)}100%{opacity:0;transform:translateX(${cx(2) - 140 - 16}px)}}
+.hit{opacity:0;animation:hit 6s linear 1s infinite}
+@keyframes hit{0%,39%{opacity:0}40%,75%{opacity:1}80%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.pkt,.atk{opacity:0}.hit{opacity:1}}`;
+  return svg(W, H, "Website security: requests pass Cloudflare WAF, a login-rate-limiting firewall and a hardened WordPress or Laravel app with offsite backups; attacks such as brute-force logins are blocked", body, css);
+}
+
+const CHECKS = [
+  "SSL certificate and HSTS",
+  "Security headers (CSP, X-Frame-Options)",
+  "Admin login rate limits and 2FA",
+  "Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1",
+  "Schema, sitemap.xml and robots.txt",
+  "Daily offsite backups, restore tested",
+  "Uptime monitoring and error logging",
+];
+
+function checklist(t) {
+  const W = 1280, H = 500;
+  let body = panel(t, W, H, "launch-check --before-handover");
+  CHECKS.forEach((label, i) => {
+    const y = 122 + i * 40;
+    // leader dots sit in a fixed column, so they never depend on how wide the label renders
+    body += `<g ${show(0.4 + i * 0.3)}><text x="40" y="${y}" font-size="17" font-family="${MONO}" xml:space="preserve" fill="${t.ok}">[ ok ]  <tspan fill="${t.cardInk}">${esc(label)}</tspan></text>`;
+    body += `<text x="720" y="${y}" font-size="17" font-family="${MONO}" fill="${t.comment}" fill-opacity=".45">${".".repeat(46)}</text>`;
+    body += `<text x="1240" y="${y}" text-anchor="end" font-size="17" font-family="${MONO}" fill="${t.ok}">pass</text></g>`;
+  });
+  body += `<g ${show(0.6 + CHECKS.length * 0.3)}><text x="40" y="452" font-size="54" font-weight="900" letter-spacing="-2" fill="${t.ok}">Ready to ship.</text></g>`;
+  return svg(W, H, "Launch checklist before every handover: SSL and HSTS, security headers, login rate limits and 2FA, Core Web Vitals, schema and sitemap, offsite backups, uptime monitoring", body, POP);
+}
+
+const CAREER = [
+  ["2017", "Aptech", "Web development training", "cu"],
+  ["2018", "Softarena Solution", ".NET Framework MVC", "cu"],
+  ["2019", "Freelance, Fiverr", "Python, Django, PHP", "sh"],
+  ["2021", "National IT Solution", "WordPress developer", "wp"],
+  ["2022", "Zi Softech", "Web developer, team lead", "wp"],
+  ["2024", "Zee IT Service", "WordPress developer", "wp"],
+  ["2025", "EcomFlows Limited", "Senior WordPress, Shopify", "sh"],
+  ["Now", "ThemeHive", "Shopify and Laravel", "lv"],
+];
+// uneven spacing leaves room for the long labels near the right edge
+const CAREER_X = [80, 230, 390, 550, 710, 850, 1030, 1200];
+
+function timeline(t) {
+  const W = 1280, H = 360, LINE = 178;
+  let body = `<rect width="${W}" height="${H}" fill="${t.bg}"/>`;
+  body += `<rect class="draw" x="40" y="${LINE}" width="1200" height="6" fill="${t.ink}"/>`;
+  CAREER.forEach(([year, org, role, key], i) => {
+    const x = CAREER_X[i], up = i % 2 === 0, end = i === CAREER.length - 1;
+    const ax = end ? x + 9 : x - 9, anchor = end ? ` text-anchor="end"` : "";
+    const y = up ? 70 : 250, d = 0.5 + i * 0.14;
+    body += `<rect ${show(d)} x="${x - 9}" y="${LINE - 6}" width="18" height="18" fill="${t.stack[key].c}"/>`;
+    body += `<g ${show(d + 0.08)}><text x="${ax}" y="${y + 34}"${anchor} font-size="34" font-weight="900" letter-spacing="-1.2" fill="${t.ink}">${year}</text>`;
+    body += `<text x="${ax}" y="${y + 62}"${anchor} font-size="17" font-weight="700" fill="${t.ink}">${esc(org)}</text>`;
+    body += `<text x="${ax}" y="${y + 86}"${anchor} font-size="15" fill="${t.muted}">${esc(role)}</text></g>`;
+  });
+  const css = `${POP}
+.draw{transform-box:fill-box;transform-origin:0 50%;animation:draw 1.2s cubic-bezier(.16,1,.3,1) forwards;transform:scaleX(0)}
+@keyframes draw{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.draw{transform:none}}`;
+  return svg(W, H, "Career timeline 2017 to now: Aptech, Softarena Solution, freelance on Fiverr, National IT Solution, Zi Softech team lead, Zee IT Service, EcomFlows Limited senior developer, ThemeHive Technologies", body, css);
 }
 
 /* ---------------- buttons and closing ---------------- */
@@ -286,7 +387,7 @@ for (const [mode, t] of Object.entries(THEMES)) {
   writeFileSync(out(`hero-${mode}.svg`), hero(t));
   writeFileSync(out(`stacks-${mode}.svg`), stacks(t));
   writeFileSync(out(`closing-${mode}.svg`), closing(t));
-  WORK.forEach((w, i) => writeFileSync(out(`work-${w[0]}-${mode}.svg`), workCard(t, w, i)));
+  for (const [name, fn] of Object.entries({ skills, security, checklist, timeline })) writeFileSync(out(`${name}-${mode}.svg`), fn(t));
   BUTTONS.forEach(([id, label, w]) => writeFileSync(out(`btn-${id}-${mode}.svg`), button(t, label, w)));
 }
 console.log("assets written");

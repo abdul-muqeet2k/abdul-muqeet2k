@@ -1,7 +1,7 @@
 <a href="https://abdul.ecomflows.net/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <img src="assets/hero-light.svg" width="100%" alt="Abdul Muqeet, senior WordPress, Shopify and Laravel developer in Pakistan. 6+ years, 300+ Shopify stores, 44 client builds, 5.0 Fiverr rating.">
+    <img src="assets/hero-light.svg" width="100%" alt="Abdul Muqeet, senior WordPress, Shopify and Laravel developer. 6+ years, 300+ Shopify stores, 44 client builds, 5.0 Fiverr rating.">
   </picture>
 </a>
 
@@ -13,7 +13,7 @@
 
 <img src="https://komarev.com/ghpvc/?username=abdul-muqeet2k&label=Profile%20views&color=5B43F0&style=for-the-badge" alt="Profile views">
 
-I'm **Abdul Muqeet**, a senior **WordPress developer**, **Shopify developer** and **Laravel developer** based in Gujranwala, Pakistan. Since 2019 I have worked remotely for clients in the US, the UK, Canada, the UAE and South Africa: custom WordPress themes and plugins, WooCommerce and Shopify stores, and Laravel CRMs and SaaS apps. Every site ships fast (Core Web Vitals), search-ready (technical SEO and schema) and hardened against attacks.
+I'm **Abdul Muqeet**, a senior **WordPress developer**, **Shopify developer** and **Laravel developer**. Since 2019 I have worked remotely for clients in the US, the UK, Canada, the UAE and South Africa: custom WordPress themes and plugins, WooCommerce and Shopify stores, and Laravel CRMs and SaaS apps. Every site ships fast (Core Web Vitals), search-ready (technical SEO and schema) and hardened against attacks.
 
 ## WordPress, Shopify and Laravel development
 

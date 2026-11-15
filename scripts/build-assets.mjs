@@ -127,7 +127,7 @@ function hero(t) {
   body += `<g class="rise" style="animation-delay:.15s"><text x="48" y="300" font-size="146" font-weight="900" letter-spacing="-6" fill="${t.ink}">Muqeet</text></g>`;
   body += `<g class="rise" style="animation-delay:.3s"><text x="52" y="354" font-size="25" font-weight="700" fill="${t.ink}">WordPress, Shopify and Laravel developer.</text>`;
   body += `<text x="52" y="388" font-size="21" fill="${t.ink}">Themes, stores and web apps for clients in the</text>`;
-  body += `<text x="52" y="416" font-size="21" fill="${t.ink}">UK, the US and beyond, from Gujranwala, Pakistan.</text></g>`;
+  body += `<text x="52" y="416" font-size="21" fill="${t.ink}">UK, the US, Canada, the UAE and beyond.</text></g>`;
   const stats = [["6+", "years building"], ["300+", "Shopify stores"], ["44", "client builds"], ["5.0", "Fiverr rating"]];
   stats.forEach(([n, l], i) => {
     const x = 52 + i * 150;
@@ -212,7 +212,7 @@ function stacks(t) {
 
 /* ---------------- infographics: developer and security panels ---------------- */
 
-const PROMPT = "abdul@gujranwala:~$";
+const PROMPT = "abdul@dev:~$";
 const tint = (t, key) => (key === "ok" ? t.ok : t.stack[key].tint);
 const POP = `@keyframes show{to{opacity:1}}
 .blink{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{fill-opacity:0}}
